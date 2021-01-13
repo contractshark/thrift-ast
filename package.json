@@ -1,0 +1,15 @@
+{
+	"name": "@contractshark/ast-generate",
+	"version": "0.1.0",
+	"description": "generate AST from Solidity ",
+	"main": "GenAST.js",
+	"scripts": {
+		"test": "jest"
+	},
+	"author": "",
+	"license": "Apache-2.0",
+	"dependencies": {
+		"@solidity-parser/parser": "^0.11.0",
+		"thrift": "^0.13.0-hotfix.1"
+	}
+}
