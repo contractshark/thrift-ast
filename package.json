@@ -1,15 +1,19 @@
 {
-	"name": "@contractshark/ast-generate",
-	"version": "0.1.0",
-	"description": "generate AST from Solidity ",
-	"main": "GenAST.js",
-	"scripts": {
-		"test": "jest"
-	},
-	"author": "",
-	"license": "Apache-2.0",
-	"dependencies": {
-		"@solidity-parser/parser": "^0.11.0",
-		"thrift": "^0.14.1"
-	}
+  "name": "@contractshark/ast-generate",
+  "version": "0.1.0",
+  "description": "generate AST from Solidity ",
+  "main": "GenAST.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@solidity-parser/parser": "^0.11.0",
+    "thrift": "^0.14.1",
+    "ts-migrate": "^0.1.16"
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
 }
