@@ -1,12 +1,16 @@
 'use strict';
 
+// @ts-expect-error ts-migrate(2580) FIXME: Cannot find name 'require'. Do you need to install... Remove this comment to see the full error message
 var thrift = require('thrift');
 var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
+// @ts-expect-error ts-migrate(2580) FIXME: Cannot find name 'require'. Do you need to install... Remove this comment to see the full error message
 var ttypes = require('./GenAST_types');
 
+// @ts-expect-error ts-migrate(2300) FIXME: Duplicate identifier 'this'.
 var GenAST_genAST_args = function (args) {
+  // @ts-expect-error ts-migrate(2300) FIXME: Duplicate identifier 'this'.
   this.sol = null;
   if (args) {
     if (args.sol !== undefined && args.sol !== null) {
@@ -56,7 +60,9 @@ GenAST_genAST_args.prototype.write = function (output) {
 
 var GenAST_genAST_result = function (args) {
   this.success = null;
+  // @ts-expect-error ts-migrate(2300) FIXME: Duplicate identifier 'this'.
   if (args) {
+    // @ts-expect-error ts-migrate(2300) FIXME: Duplicate identifier 'this'.
     if (args.success !== undefined && args.success !== null) {
       this.success = args.success;
     }
@@ -104,6 +110,7 @@ GenAST_genAST_result.prototype.write = function (output) {
 
 var GenASTClient = (exports.Client = function (output, pClass) {
   this.output = output;
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'exports'.
   this.pClass = pClass;
   this._seqid = 0;
   this._reqs = {};
@@ -142,6 +149,7 @@ GenASTClient.prototype.send_genAST = function (sol) {
   };
   var args = new GenAST_genAST_args(params);
   try {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     output.writeMessageBegin('genAST', Thrift.MessageType.CALL, this.seqid());
     args.write(output);
     output.writeMessageEnd();
@@ -169,6 +177,7 @@ GenASTClient.prototype.recv_genAST = function (input, mtype, rseqid) {
   input.readMessageEnd();
 
   if (null !== result.success) {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 0.
     return callback(null, result.success);
   }
   return callback('genAST failed: unknown result');
@@ -176,6 +185,7 @@ GenASTClient.prototype.recv_genAST = function (input, mtype, rseqid) {
 var GenASTProcessor = (exports.Processor = function (handler) {
   this._handler = handler;
 });
+// @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'exports'.
 GenASTProcessor.prototype.process = function (input, output) {
   var r = input.readMessageBegin();
   if (this['process_' + r.fname]) {
@@ -198,10 +208,12 @@ GenASTProcessor.prototype.process_genAST = function (seqid, input, output) {
   args.read(input);
   input.readMessageEnd();
   if (this._handler.genAST.length === 1) {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 0.
     Q.fcall(this._handler.genAST.bind(this._handler), args.sol)
       .then(function (result) {
         var result_obj = new GenAST_genAST_result({ success: result });
         output.writeMessageBegin('genAST', Thrift.MessageType.REPLY, seqid);
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         result_obj.write(output);
         output.writeMessageEnd();
         output.flush();
@@ -226,6 +238,7 @@ GenASTProcessor.prototype.process_genAST = function (seqid, input, output) {
             ? err
             : { success: result },
         );
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         output.writeMessageBegin('genAST', Thrift.MessageType.REPLY, seqid);
       } else {
         result_obj = new Thrift.TApplicationException(
