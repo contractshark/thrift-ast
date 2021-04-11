@@ -1,7 +1,7 @@
 "use strict";
 
-var thrift = require("thrift");
-var Thrift = thrift.Thrift;
-var Q = thrift.Q;
+const thrift = require("thrift");
+const Thrift = thrift.Thrift;
+const Q = thrift.Q;
 
-var ttypes = (module.exports = {});
+const ttypes = (module.exports = {});
