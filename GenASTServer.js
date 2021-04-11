@@ -1,6 +1,6 @@
-var thrift = require("thrift");
+const thrift = require("thrift");
 var GenAST = require("./GenAST.js");
-var parser = require("@solidity-parser/parser");
+const parser = require("@solidity-parser/parser");
 
 var genASTImpl = {
 	genAST: function (sol) {
@@ -9,5 +9,8 @@ var genASTImpl = {
 		return JSON.stringify(parser.parse(sol));
 	},
 };
+
+var http = require('http').createServer(app);
 var server = thrift.createServer(GenAST, genASTImpl);
 server.listen(9898);
+//
